@@ -6,7 +6,7 @@ import express, {
   type Request,
   type Response,
 } from "express";
-import helmet from "helmet";
+import * as helmet from "helmet";
 import type { AppConfig } from "./config.js";
 import type { PaymentSessionService } from "./adyen/paymentSessionService.js";
 import { createCheckoutRouter } from "./routes/checkout.js";
@@ -78,34 +78,44 @@ export function createApp(
 
   app.disable("x-powered-by");
   app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", ...ADYEN_ORIGINS],
-          styleSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://fonts.googleapis.com",
-            ...ADYEN_ORIGINS,
-          ],
-          imgSrc: [
-            "'self'",
-            "data:",
-            "https://images.unsplash.com",
-            ...ADYEN_ORIGINS,
-          ],
-          fontSrc: [
-            "'self'",
-            "data:",
-            "https://fonts.gstatic.com",
-            ...ADYEN_ORIGINS,
-          ],
-          connectSrc: ["'self'", ...ADYEN_ORIGINS, ...ADYEN_ANALYTICS_ORIGINS],
-          frameSrc: ["'self'", ...ADYEN_ORIGINS],
-        },
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", ...ADYEN_ORIGINS],
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://fonts.googleapis.com",
+          ...ADYEN_ORIGINS,
+        ],
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://images.unsplash.com",
+          ...ADYEN_ORIGINS,
+        ],
+        fontSrc: [
+          "'self'",
+          "data:",
+          "https://fonts.gstatic.com",
+          ...ADYEN_ORIGINS,
+        ],
+        connectSrc: ["'self'", ...ADYEN_ORIGINS, ...ADYEN_ANALYTICS_ORIGINS],
+        frameSrc: ["'self'", ...ADYEN_ORIGINS],
       },
     }),
+    helmet.crossOriginOpenerPolicy(),
+    helmet.crossOriginResourcePolicy(),
+    helmet.originAgentCluster(),
+    helmet.referrerPolicy(),
+    helmet.strictTransportSecurity(),
+    helmet.xContentTypeOptions(),
+    helmet.xDnsPrefetchControl(),
+    helmet.xDownloadOptions(),
+    helmet.xFrameOptions(),
+    helmet.xPermittedCrossDomainPolicies(),
+    helmet.xPoweredBy(),
+    helmet.xXssProtection(),
   );
 
   // Body size is capped to blunt trivial payload-flood attempts.

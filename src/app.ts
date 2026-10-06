@@ -6,7 +6,7 @@ import express, {
   type Request,
   type Response,
 } from "express";
-import helmet from "helmet";
+import { default as helmet } from "helmet";
 import type { AppConfig } from "./config.js";
 import type { PaymentSessionService } from "./adyen/paymentSessionService.js";
 import { createCheckoutRouter } from "./routes/checkout.js";

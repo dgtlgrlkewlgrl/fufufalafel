@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title">
+  <title id="title">Fufu the falafel mascot</title>
+  <g fill="none" stroke="#171717" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M85 157l-39-22M235 156l40-17" stroke-width="13"/>
+    <path d="M125 258 110 278 94 282M195 258l15 20 16 4" stroke-width="14"/>
+    <path d="M159 31c15 2 22 10 35 9 12-1 20 6 27 16 8 10 18 11 23 25 5 13 15 18 14 33-1 12 8 22 3 35-4 12 3 25-5 37-7 10-6 22-18 30-10 7-12 20-27 22-14 2-22 12-37 8-14-4-25 5-38-2-13-8-25-6-33-19-7-11-19-13-22-28-3-13-14-19-11-34 3-14-6-23 0-37 6-13 0-25 10-36 9-11 9-23 22-30 12-6 17-19 32-19 14 0 22-13 40-10Z" fill="#bd6928" stroke-width="12"/>
+    <path d="M117 127c-2-13 2-23 12-24 11 0 16 11 15 25-1 13-6 21-15 20-8-1-11-9-12-21Zm62-11c0-13 5-22 15-21 11 2 14 13 11 27-3 12-9 19-17 16-8-3-10-11-9-22Z" fill="#fffdf6" stroke-width="8"/>
+    <ellipse cx="137" cy="132" rx="5" ry="9" fill="#171717" stroke="none"/>
+    <ellipse cx="188" cy="124" rx="5" ry="9" fill="#171717" stroke="none"/>
+    <path d="M146 166c8 13 23 15 34 1" stroke-width="8"/>
+    <path d="m99 98 6-5m22-28 6 3m44-7 5-6m44 29 7-3m-145 76 7 3m137 20 6 5m-98 30 3 6m45-3-1 6" stroke-width="7"/>
+  </g>
+  <g fill="#5f7138">
+    <circle cx="92" cy="127" r="5"/><circle cx="108" cy="183" r="4"/><circle cx="125" cy="83" r="4"/>
+    <circle cx="160" cy="69" r="5"/><circle cx="210" cy="87" r="4"/><circle cx="223" cy="143" r="5"/>
+    <circle cx="196" cy="183" r="4"/><circle cx="155" cy="207" r="5"/><circle cx="80" cy="154" r="3"/>
+  </g>
+  <g fill="#171717">
+    <circle cx="112" cy="108" r="4"/><circle cx="153" cy="81" r="3"/><circle cx="203" cy="108" r="4"/>
+    <circle cx="230" cy="171" r="3"/><circle cx="179" cy="198" r="3"/><circle cx="133" cy="192" r="3"/>
+    <circle cx="101" cy="161" r="3"/><circle cx="186" cy="76" r="3"/><circle cx="152" cy="185" r="3"/>
+  </g>
+</svg>

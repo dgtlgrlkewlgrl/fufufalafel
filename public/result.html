@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your order | Fufu Falafel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img src="/fufu-mascot.svg" alt="" />
+        <span class="brand-name"><span>Fufu</span><span>Falafel</span></span>
+      </a>
+      <nav class="site-nav"><a href="/">The menu</a></nav>
+    </header>
+    <main class="site-shell order-receipt">
+      <img
+        class="order-mascot"
+        src="/fufu-mascot.svg"
+        alt="Fufu the falafel mascot"
+      />
+      <p class="eyebrow">Fufu Falafel</p>
+      <h1 id="order-heading">Checking your order</h1>
+      <output id="status" aria-live="polite">Checking payment…</output>
+      <section id="order-summary-panel" hidden aria-label="Order summary">
+        <p class="receipt-order-number" id="receipt-order-number" hidden>
+          Order # <strong id="receipt-reference"></strong>
+        </p>
+        <h2 id="receipt-meal">Your falafel order</h2>
+        <p id="receipt-toppings"></p>
+        <p class="receipt-total">Total <strong id="receipt-total"></strong></p>
+      </section>
+      <section id="order-help" hidden aria-label="Order help">
+        <h2>Need a hand?</h2>
+        <div class="receipt-actions">
+          <button class="button-link" id="refund-button" type="button">
+            Request refund
+          </button>
+        </div>
+        <output id="refund-status" aria-live="polite"></output>
+        <details class="payment-status">
+          <summary class="button-link receipt-secondary">
+            Payment status
+          </summary>
+          <div class="payment-status-panel">
+            <h3>Adyen payment activity</h3>
+            <dl class="payment-status-list">
+              <div>
+                <dt>Payment result</dt>
+                <dd id="payment-result">Pending</dd>
+              </div>
+              <div>
+                <dt>Session ID</dt>
+                <dd id="payment-session-id">Unavailable</dd>
+              </div>
+              <div>
+                <dt>Refund request</dt>
+                <dd id="payment-refund-status">Not requested</dd>
+              </div>
+            </dl>
+            <p class="payment-status-note">
+              Refund status reflects Adyen's API response; final outcomes are
+              asynchronous.
+            </p>
+          </div>
+        </details>
+      </section>
+      <div id="dropin-container"></div>
+      <a class="receipt-menu-link" href="/">Back to the menu</a>
+    </main>
+    <dialog id="refund-dialog">
+      <h2>Refund your order?</h2>
+      <p id="refund-amount"></p>
+      <p>
+        The payment will be refunded, or cancelled if it has not been captured
+        yet.
+      </p>
+      <div class="receipt-actions">
+        <button class="button-link" id="refund-confirm" type="button">
+          Confirm refund
+        </button>
+        <button class="receipt-cancel" id="refund-cancel" type="button">
+          Keep order
+        </button>
+      </div>
+    </dialog>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.js"></script>
+    <script type="module" src="/result.js"></script>
+  </body>
+</html>

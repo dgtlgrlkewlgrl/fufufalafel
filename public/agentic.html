@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentic order | Fufu Falafel</title>
+    <meta
+      name="description"
+      content="Choose a falafel meal and try an agent-led checkout experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Fufu Falafel home">
+        <img src="/fufu-mascot.svg" alt="" />
+        <span class="brand-name"><span>Fufu</span><span>Falafel</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/#menu">The menu</a>
+        <a href="/agent.html">Ingredient guide</a>
+        <a class="nav-order" href="/">Shop</a>
+      </nav>
+    </header>
+
+    <main class="agentic-shell">
+      <section class="agentic-heading">
+        <p class="eyebrow">A new way to order</p>
+        <h1>Lunch, by conversation.</h1>
+        <p>
+          Tell Fufu what sounds good. Pick a meal, make it yours, and choose how
+          to check out.
+        </p>
+      </section>
+
+      <section class="agentic-flow" aria-label="Fufu ordering assistant">
+        <div class="agentic-bar">
+          <div class="agentic-identity">
+            <img src="/fufu-mascot.svg" alt="" /><span>Fufu lunch helper</span>
+          </div>
+        </div>
+
+        <div id="agentic-chat" class="agentic-chat" aria-live="polite">
+          <div class="chat-bubble assistant">
+            Hi! Tell me what kind of lunch you’re in the mood for. I can help
+            you choose from the Fufu menu.
+          </div>
+        </div>
+
+        <div
+          class="agent-suggestions agentic-suggestions"
+          aria-label="Choose a prompt"
+        >
+          <button
+            type="button"
+            data-agentic-prompt="I want something gluten free"
+          >
+            I want something gluten free
+          </button>
+          <button type="button" data-agentic-prompt="What is in the salad?">
+            What is in the salad?
+          </button>
+          <button type="button" data-agentic-prompt="I need protein">
+            I need protein
+          </button>
+        </div>
+
+        <form id="agentic-followup-form" class="agentic-followup" hidden>
+          <label for="agentic-followup-input"
+            >Any other questions before you choose?</label
+          >
+          <input
+            id="agentic-followup-input"
+            type="text"
+            placeholder="Ask about the menu or ingredients"
+            autocomplete="off"
+            required
+          />
+          <button class="agent-submit" type="submit">Ask</button>
+        </form>
+
+        <section
+          id="agentic-menu"
+          class="agentic-menu"
+          hidden
+          aria-labelledby="agentic-menu-title"
+        >
+          <div class="agentic-menu-heading">
+            <div>
+              <p class="eyebrow">Picked for your mood</p>
+              <h2 id="agentic-menu-title">Three falafel favorites</h2>
+            </div>
+            <p>Every meal comes with falafel.</p>
+          </div>
+          <div class="agentic-meal-grid">
+            <article class="agentic-meal-card">
+              <div class="agentic-meal-art art-bowl">
+                <img
+                  src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  alt="A colorful falafel-style bowl with fresh vegetables"
+                />
+              </div>
+              <h3>Falafel Bowl</h3>
+              <p>Warm grains, greens, cucumber, and tomato.</p>
+              <div class="agentic-meal-bottom">
+                <strong>€13.50</strong
+                ><button
+                  type="button"
+                  class="agentic-select"
+                  data-meal="bowl"
+                  aria-pressed="false"
+                >
+                  Choose bowl
+                </button>
+              </div>
+            </article>
+            <article class="agentic-meal-card">
+              <div class="agentic-meal-art art-salad">
+                <img
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  alt="Fresh Mediterranean-inspired salad with greens and vegetables"
+                />
+              </div>
+              <h3>Falafel Salad</h3>
+              <p>Chopped greens, cucumber, tomato, and lemon.</p>
+              <div class="agentic-meal-bottom">
+                <strong>€12.50</strong
+                ><button
+                  type="button"
+                  class="agentic-select"
+                  data-meal="salad"
+                  aria-pressed="false"
+                >
+                  Choose salad
+                </button>
+              </div>
+            </article>
+            <article class="agentic-meal-card">
+              <div class="agentic-meal-art art-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                  alt="A warm falafel wrap ready to serve"
+                />
+              </div>
+              <h3>Falafel Wrap</h3>
+              <p>Crunchy greens, pickles, and warm flatbread.</p>
+              <div class="agentic-meal-bottom">
+                <strong>€12.50</strong
+                ><button
+                  type="button"
+                  class="agentic-select"
+                  data-meal="wrap"
+                  aria-pressed="false"
+                >
+                  Choose wrap
+                </button>
+              </div>
+            </article>
+          </div>
+          <p class="agentic-allergy-note">
+            Ingredient descriptions are not an allergen or cross-contact
+            guarantee. Check with the restaurant about dietary needs.
+          </p>
+        </section>
+
+        <section
+          id="agentic-checkout"
+          class="agentic-checkout"
+          hidden
+          aria-labelledby="agentic-checkout-title"
+        >
+          <div class="agentic-checkout-heading">
+            <div>
+              <p class="eyebrow">Your order</p>
+              <h2 id="agentic-checkout-title">Make it yours.</h2>
+            </div>
+            <p id="agentic-order-description"></p>
+          </div>
+          <fieldset class="agentic-toppings">
+            <legend>Add toppings <span>Optional</span></legend>
+            <div class="topping-grid">
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  value="tahini"
+                  data-price="75"
+                  data-name="Tahini"
+                /><span>Tahini <small>+€0.75 · sesame</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  value="herb-sauce"
+                  data-price="75"
+                  data-name="Green herb sauce"
+                /><span>Green herb sauce <small>+€0.75</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  value="pickled-onion"
+                  data-price="50"
+                  data-name="Pickled red onion"
+                /><span>Pickled red onion <small>+€0.50</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  value="feta"
+                  data-price="100"
+                  data-name="Feta"
+                /><span>Feta <small>+€1.00 · milk</small></span></label
+              >
+              <label class="topping-option" id="agentic-extra-falafel"
+                ><input
+                  type="checkbox"
+                  value="extra-falafel"
+                  data-price="250"
+                  data-name="Extra falafel"
+                /><span>Extra falafel <small>+€2.50</small></span>
+                <small class="topping-recommendation" hidden
+                  >Recommended for more protein</small
+                ></label
+              >
+            </div>
+          </fieldset>
+          <fieldset class="agentic-payments">
+            <legend>Choose how to pay</legend>
+            <div class="agentic-payment-grid">
+              <label class="agentic-payment-option"
+                ><input
+                  type="radio"
+                  name="agentic-payment"
+                  value="agent-stablecoin"
+                /><span
+                  ><strong>Pay with agent</strong
+                  ><small>Stablecoin · USDC</small></span
+                ></label
+              >
+              <label class="agentic-payment-option"
+                ><input type="radio" name="agentic-payment" value="card" /><span
+                  ><strong>Credit card</strong
+                  ><small>Continue to secure Adyen checkout</small></span
+                ></label
+              >
+            </div>
+          </fieldset>
+          <div class="agentic-place-order">
+            <p>Total <strong id="agentic-total">€13.50</strong></p>
+            <button
+              id="agentic-pay-button"
+              class="agent-submit"
+              type="button"
+              disabled
+            >
+              Choose payment
+            </button>
+          </div>
+          <output
+            id="agentic-card-status"
+            class="agentic-card-status"
+            aria-live="polite"
+          ></output>
+          <div id="agentic-dropin" class="agentic-dropin" hidden></div>
+        </section>
+
+        <section
+          id="agentic-confirmation"
+          class="agentic-confirmation"
+          hidden
+          role="status"
+          aria-live="polite"
+        >
+          <p class="eyebrow">Order preview</p>
+          <h2 id="agentic-confirmation-title"></h2>
+          <p id="agentic-confirmation-copy"></p>
+          <a class="agent-checkout" href="/">Back to Fufu Falafel</a>
+        </section>
+      </section>
+
+      <details class="test-cards">
+        <summary>Adyen TEST card numbers</summary>
+        <ul>
+          <li>
+            Visa <code>4111 1111 1111 1111</code> · exp <code>03/30</code> · CVC
+            <code>737</code>
+          </li>
+          <li>
+            Mastercard <code>5577 0000 5577 0004</code> · exp
+            <code>03/30</code> · CVC <code>737</code>
+          </li>
+          <li>
+            3-D Secure 2 <code>4917 6100 0000 0000</code> · exp
+            <code>03/30</code> · CVC <code>737</code>
+          </li>
+        </ul>
+      </details>
+
+      <p class="agentic-disclosure">
+        Agent authorization and stablecoin transfer are simulated. Credit-card
+        checkout uses Adyen TEST; no live payment is made.
+      </p>
+    </main>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.js"></script>
+    <script type="module" src="/agentic.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "express",
+  "rewrites": [{ "source": "/result", "destination": "/result.html" }],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com; img-src 'self' data: https://images.unsplash.com https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com; font-src 'self' data: https://fonts.gstatic.com https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com; connect-src 'self' https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com https://checkoutanalytics-test.adyen.com https://checkoutanalytics-live.adyen.com; frame-src 'self' https://checkoutshopper-test.adyen.com https://checkoutshopper-test.cdn.adyen.com https://checkoutshopper-live.adyen.com https://checkoutshopper-live.cdn.adyen.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+        },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}

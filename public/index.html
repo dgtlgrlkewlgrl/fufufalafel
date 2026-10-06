@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fufu Falafel | Mission District</title>
+    <meta
+      name="description"
+      content="Fresh falafel, crispy edges, generous sauces. Pick your Fufu favorite and order online."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Fufu Falafel home">
+        <img src="/fufu-mascot.svg" alt="" />
+        <span class="brand-name"><span>Fufu</span><span>Falafel</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a
+          class="nav-agent"
+          href="/agentic.html"
+          aria-label="Order with an agent, new"
+        >
+          Order with an agent
+          <span class="nav-new" aria-hidden="true">★</span>
+        </a>
+        <a class="nav-order" href="#menu">Order</a>
+      </nav>
+    </header>
+
+    <main class="site-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy-block">
+          <p class="eyebrow">Mission District · San Francisco</p>
+          <h1 id="hero-title">Falafel,<br /><span>made for you.</span></h1>
+          <p class="hero-copy">
+            Warm pita, crisp falafel, generous tahini, and the kind of lunch
+            that feels like a little comfort in your day.
+          </p>
+          <a class="button-link hero-action" href="#menu"
+            >Pick your pita <span aria-hidden="true">↘</span></a
+          >
+        </div>
+        <div class="hero-art" aria-label="Fufu, the happy falafel mascot">
+          <div class="mascot-disc">
+            <img src="/fufu-mascot.svg" alt="Fufu the falafel mascot" />
+          </div>
+          <span class="hero-sticker">fresh<br />ish!</span>
+        </div>
+      </section>
+
+      <section class="menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Falafel, however you like it</p>
+            <h2 id="menu-title">Choose your meal.</h2>
+          </div>
+          <p>
+            Every bowl, salad, and wrap starts with falafel. Add the toppings
+            you love.
+          </p>
+        </div>
+
+        <p id="agent-note" class="agent-note" hidden>
+          Picked for you by the Fufu lunch finder. Choose a payment method
+          below.
+        </p>
+        <form id="session-form">
+          <fieldset id="products">
+            <legend>Choose one meal</legend>
+            <div class="menu-grid">
+              <label class="menu-option">
+                <input
+                  type="radio"
+                  name="product"
+                  value="bowl"
+                  data-amount="1350"
+                  data-name="Falafel Bowl"
+                  checked
+                />
+                <span class="menu-card">
+                  <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A colorful falafel-style bowl with fresh vegetables"
+                  />
+                  <span class="menu-copy"
+                    ><strong>Falafel Bowl</strong
+                    ><small
+                      >Falafel, warm grains, greens, cucumber, tomato</small
+                    ></span
+                  >
+                  <strong class="menu-price">€13.50</strong>
+                </span>
+              </label>
+              <label class="menu-option">
+                <input
+                  type="radio"
+                  name="product"
+                  value="salad"
+                  data-amount="1250"
+                  data-name="Falafel Salad"
+                />
+                <span class="menu-card">
+                  <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="Fresh Mediterranean-inspired salad with greens and vegetables"
+                  />
+                  <span class="menu-copy"
+                    ><strong>Falafel Salad</strong
+                    ><small
+                      >Falafel, chopped greens, cucumber, tomato, lemon</small
+                    ></span
+                  >
+                  <strong class="menu-price">€12.50</strong>
+                </span>
+              </label>
+              <label class="menu-option">
+                <input
+                  type="radio"
+                  name="product"
+                  value="wrap"
+                  data-amount="1250"
+                  data-name="Falafel Wrap"
+                />
+                <span class="menu-card">
+                  <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A warm falafel wrap ready to serve"
+                  />
+                  <span class="menu-copy"
+                    ><strong>Falafel Wrap</strong
+                    ><small
+                      >Falafel, crunchy greens, pickles, warm flatbread</small
+                    ></span
+                  >
+                  <strong class="menu-price">€12.50</strong>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset id="toppings">
+            <legend>Add toppings <span>Optional</span></legend>
+            <div class="topping-grid">
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  name="topping"
+                  value="tahini"
+                  data-price="75"
+                  data-name="Tahini"
+                /><span>Tahini <small>+€0.75 · sesame</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  name="topping"
+                  value="herb-sauce"
+                  data-price="75"
+                  data-name="Green herb sauce"
+                /><span>Green herb sauce <small>+€0.75</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  name="topping"
+                  value="pickled-onion"
+                  data-price="50"
+                  data-name="Pickled red onion"
+                /><span>Pickled red onion <small>+€0.50</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  name="topping"
+                  value="feta"
+                  data-price="100"
+                  data-name="Feta"
+                /><span>Feta <small>+€1.00 · milk</small></span></label
+              >
+              <label class="topping-option"
+                ><input
+                  type="checkbox"
+                  name="topping"
+                  value="extra-falafel"
+                  data-price="250"
+                  data-name="Extra falafel"
+                /><span>Extra falafel <small>+€2.50</small></span></label
+              >
+            </div>
+          </fieldset>
+          <p id="order-summary" class="order-summary" aria-live="polite"></p>
+
+          <div class="checkout-row">
+            <fieldset class="payment-choice">
+              <legend>How would you like to pay?</legend>
+              <div class="payment-choice-options">
+                <label
+                  ><input
+                    type="radio"
+                    name="payment-type"
+                    value="adyen"
+                    checked
+                  /><span>Card or iDEAL</span></label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="payment-type"
+                    value="stablecoin"
+                  /><span>Stablecoin</span></label
+                >
+              </div>
+            </fieldset>
+            <div class="order-action">
+              <div class="order-total">
+                Your pick <strong id="order-total">€12.50</strong>
+              </div>
+              <button id="continue-button" type="submit">
+                Order <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section id="checkout-panel" hidden aria-labelledby="checkout-title">
+        <h2 id="checkout-title">Lets make it official.</h2>
+        <p id="status" role="status" aria-live="polite"></p>
+        <div id="dropin-container"></div>
+        <div id="stablecoin-preview" hidden>
+          <h3>USDC checkout</h3>
+          <p id="stablecoin-amount"></p>
+          <p>
+            Wallet connection is not configured, so this checkout will not
+            request or transfer cryptocurrency.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <details class="test-cards">
+      <summary>Adyen TEST card numbers</summary>
+      <ul>
+        <li>
+          Visa <code>4111 1111 1111 1111</code> · exp <code>03/30</code> · CVC
+          <code>737</code>
+        </li>
+        <li>
+          Mastercard <code>5577 0000 5577 0004</code> · exp <code>03/30</code> ·
+          CVC <code>737</code>
+        </li>
+        <li>
+          3-D Secure 2 <code>4917 6100 0000 0000</code> · exp
+          <code>03/30</code> · CVC <code>737</code>
+        </li>
+      </ul>
+    </details>
+
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/6.46.0/adyen.js"></script>
+    <script type="module" src="/checkout.js"></script>
+  </body>
+</html>

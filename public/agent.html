@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order with an agent | Fufu Falafel</title>
+    <meta
+      name="description"
+      content="Find a comforting Fufu Falafel lunch that fits your taste and dietary needs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Fufu Falafel home">
+        <img src="/fufu-mascot.svg" alt="" />
+        <span class="brand-name"><span>Fufu</span><span>Falafel</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/#menu">The menu</a>
+        <a href="/agentic.html">Agent checkout</a>
+        <a class="nav-order" href="/">Shop</a>
+      </nav>
+    </header>
+
+    <main class="agent-shell">
+      <section class="agent-heading">
+        <p class="eyebrow">A little lunch, handled</p>
+        <h1>Tell Fufu what sounds good.</h1>
+        <p>Ask about ingredients, flavors, or what fits your mood.</p>
+      </section>
+
+      <section class="agent-window" aria-label="Fufu lunch finder demo">
+        <div class="agent-window-head">
+          <img src="/fufu-mascot.svg" alt="" />
+          <span>Fufu lunch finder</span>
+          <span class="demo-label">DEMO</span>
+        </div>
+        <div
+          id="agent-conversation"
+          class="agent-conversation"
+          aria-live="polite"
+        >
+          <div class="chat-bubble assistant">
+            Hey! Tell me what sounds good, or ask what's in a dish. I can only
+            use the menu details listed here, so please confirm allergies with
+            the kitchen.
+          </div>
+        </div>
+        <form id="agent-form" class="agent-form">
+          <label class="visually-hidden" for="agent-prompt"
+            >Describe what you want</label
+          >
+          <input
+            id="agent-prompt"
+            name="prompt"
+            value="I want something gluten-free"
+            autocomplete="off"
+            required
+          />
+          <button class="agent-submit" type="submit">
+            Get a suggestion <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <div class="agent-suggestions" aria-label="Try a question">
+          <button type="button" data-prompt="I want something gluten-free">
+            Gluten-free?
+          </button>
+          <button
+            type="button"
+            data-prompt="Which dishes have tahini or sesame?"
+          >
+            Tahini or sesame?
+          </button>
+          <button type="button" data-prompt="I want something fresh and green">
+            Fresh and green
+          </button>
+        </div>
+      </section>
+
+      <section id="agent-result" class="agent-result" hidden aria-live="polite">
+        <p id="agent-result-tag" class="eyebrow">Menu suggestion</p>
+        <h2 id="agent-answer-title"></h2>
+        <p id="agent-answer"></p>
+        <article id="agent-recommendation" class="spot-card" hidden>
+          <div class="spot-icon" aria-hidden="true">FUFU<br />PITA</div>
+          <div>
+            <p id="agent-match-label" class="eyebrow">
+              Based on the listed menu
+            </p>
+            <h3 id="agent-dish-name"></h3>
+            <p id="agent-ingredients"></p>
+            <p id="agent-allergen-note" class="allergen-caveat"></p>
+            <p id="agent-price" class="spot-meta"></p>
+          </div>
+          <div class="spot-action">
+            <a id="agent-checkout" class="agent-checkout" href="/"
+              >Review this item <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </article>
+      </section>
+
+      <p class="agent-footnote">
+        Suggestions use the menu descriptions below; this page does not verify
+        recipes, allergen handling, or cross-contact. For allergies or celiac
+        disease, check directly with the restaurant before ordering. This is a
+        local prototype, not a live ChatGPT connection.
+      </p>
+    </main>
+    <script type="module" src="/agent.js"></script>
+  </body>
+</html>

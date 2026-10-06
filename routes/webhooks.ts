@@ -55,7 +55,42 @@ interface NotificationRequestItem {
     pspReference?: string;
     merchantAccountCode?: string;
     amount?: { value?: unknown; currency?: unknown };
+    additionalData?: { hmacSignature?: unknown };
   };
+}
+
+/** Distinguishes unsigned deliveries from invalid signatures and payloads. */
+function validateNotificationSignature(
+  notification: NotificationRequestItem["NotificationRequestItem"],
+  validator: hmacValidator,
+  key: string,
+): { status: 400 | 401; error: string } | undefined {
+  const signature = notification.additionalData?.hmacSignature;
+  if (typeof signature !== "string" || !signature.trim()) {
+    logger.warn("webhook.hmac.missing", {
+      pspReference: notification.pspReference,
+    });
+    return {
+      status: 401,
+      error:
+        "Missing HMAC signature. Configure HMAC signing on the Adyen webhook.",
+    };
+  }
+
+  try {
+    if (!validator.validateHMAC(notification as never, key)) {
+      logger.warn("webhook.hmac.invalid", {
+        pspReference: notification.pspReference,
+      });
+      return { status: 401, error: "Invalid HMAC signature." };
+    }
+  } catch {
+    logger.warn("webhook.payload.invalid", {
+      pspReference: notification.pspReference,
+    });
+    return { status: 400, error: "Malformed notification item." };
+  }
+  return undefined;
 }
 
 /** Checks that a kitchen request can identify the order and payment amount. */
@@ -142,21 +177,13 @@ export function createWebhookRouter(config: AppConfig): Router {
         return;
       }
 
-      let validSignature = false;
-      try {
-        validSignature = validator.validateHMAC(
-          notification as never,
-          config.hmacKey,
-        );
-      } catch {
-        res.status(400).json({ error: "Malformed notification item." });
-        return;
-      }
-      if (!validSignature) {
-        logger.warn("webhook.hmac.invalid", {
-          pspReference: notification.pspReference,
-        });
-        res.status(401).json({ error: "Invalid HMAC signature." });
+      const signatureError = validateNotificationSignature(
+        notification,
+        validator,
+        config.hmacKey,
+      );
+      if (signatureError) {
+        res.status(signatureError.status).json({ error: signatureError.error });
         return;
       }
 

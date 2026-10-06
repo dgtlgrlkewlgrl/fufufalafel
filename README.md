@@ -151,6 +151,34 @@ For captured-payment-only or partial refunds, see Adyen's
 
 ## Receiving webhooks locally
 
+### Kitchen request example on Vercel
+
+1. In the Adyen **Test** Customer Area, open **Developers > Webhooks** and add a
+   **Standard webhook**. Choose **JSON** and set its URL to
+   `https://your-project.vercel.app/api/webhooks`, not the HTML page URL.
+2. Generate the webhook HMAC key and put it in Vercel as `ADYEN_HMAC_KEY` for the
+   deployment environment you use. Never put the key in frontend files or logs.
+   If you configure webhook basic authentication, set matching
+   `ADYEN_WEBHOOK_USERNAME` and `ADYEN_WEBHOOK_PASSWORD` values too.
+3. Deploy the updated backend. The endpoint returns 503 if its HMAC key is
+   missing. Ensure Vercel Authentication does not block Adyen's requests.
+4. Send a test notification from Adyen, then make a test-card payment. Check
+   Adyen's delivery result and Vercel runtime logs for
+   `webhook.notification.accepted`. A successful `AUTHORISATION` also emits
+   `kitchen.ticket.requested` with the payment reference, order reference,
+   amount, and a stable `ticketId` such as `kitchen:PSP123456789`.
+
+The receiver verifies signatures, checks the merchant account, and validates
+the entire batch before logging any kitchen requests. Failed authorisations
+and refund events do not request kitchen tickets.
+
+This is a **logged business-action demo**, not actual kitchen fulfilment. The
+webhook supplies payment references, not the selected meal or toppings. There
+is no order database, kitchen integration, or receipt status update. Retries
+can produce repeated logs with the same ticket ID; a real kitchen consumer
+must persistently deduplicate that ID before taking action. Local tests use
+synthetic signed payloads, not notifications actually delivered by Adyen.
+
 Adyen must reach your machine, so expose the port with a tunnel and register the
 public URL (plus `/api/webhooks`) as the webhook endpoint:
 

@@ -1,4 +1,4 @@
-import { createApp } from "./app.js";
+import { createApp } from "./createApp.js";
 import { createCheckoutApi } from "./adyen/client.js";
 import { AdyenSessionService } from "./adyen/paymentSessionService.js";
 import { loadConfig } from "./config.js";

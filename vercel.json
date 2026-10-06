@@ -1,10 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "express",
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/result", "destination": "/result.html" }
+  "redirects": [
+    { "source": "/", "destination": "/index.html", "permanent": false }
   ],
+  "rewrites": [{ "source": "/result", "destination": "/result.html" }],
   "headers": [
     {
       "source": "/(.*)",
